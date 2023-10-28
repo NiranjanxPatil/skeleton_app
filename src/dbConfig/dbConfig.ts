@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 
 export async function connect() {
+
+    // code to connect project with database with trychatch method 
     try {
         mongoose.connect(process.env.MONGO_URL!);
         const connection = mongoose.connection;

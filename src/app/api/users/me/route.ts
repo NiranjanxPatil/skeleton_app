@@ -7,7 +7,9 @@ import { connect } from "@/dbConfig/dbConfig";
 connect();
 
 export async function GET(request:NextRequest){
-
+    //we are extracting userr id in this code with help of detdatafromtoken funciton 
+    //then it checks it in db fot that userId in user.findone 
+    //if found then return message user found and data as user  
     try {
         const userId = await getDataFromToken(request);
         const user = await User.findOne({_id: userId}).select("-password");
