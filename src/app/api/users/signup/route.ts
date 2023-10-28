@@ -2,14 +2,13 @@ import {connect} from "@/dbConfig/dbConfig";
 import User from "@/models/userModel";
 import { NextRequest, NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
-
-
 import { request } from "http";
-
+import { sendEmail } from "@/helpers/mailer";
 
 connect()
 
 export async function POST(request: NextRequest){
+    //getting post data from singup page
     try {
         const reqBody = await request.json()
         const {username, email, password} = reqBody
@@ -23,10 +22,12 @@ export async function POST(request: NextRequest){
             return NextResponse.json({error: "User already exists"}, {status: 400})
         }
 
-             //hash password
+        // If no user with the same email is found, the code proceeds to hash the user's password using bcryptjs. 
+        // A salt is generated, and the password is hashed.
         const salt = await bcryptjs.genSalt(10)
         const hashedPassword = await bcryptjs.hash(password, salt)
 
+        //id condition setifieddd then it create newUser with given data.
         const newUser = new User({
             username,
             email,
@@ -35,6 +36,11 @@ export async function POST(request: NextRequest){
             
         const savedUser = await newUser.save()
         console.log(savedUser);
+
+        //send verification email
+
+        await sendEmail({email, emailType: "VERIFY",
+        userId: savedUser._id});
             
         return NextResponse.json({
             message: "User created successfully",
