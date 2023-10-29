@@ -7,6 +7,8 @@ import { toast } from "react-hot-toast";
 
 
 
+
+
 export default function LoginPage() {
     const router = useRouter();
     const [user, setUser] = React.useState({
@@ -20,7 +22,6 @@ export default function LoginPage() {
 
     const onLogin = async () => {
         try {
-            
             setLoading(true);
             const response = await axios.post("/api/users/login", user);
             console.log("Login success", response.data);
@@ -72,4 +73,4 @@ export default function LoginPage() {
         </div>
     )
 
-}   
+}
