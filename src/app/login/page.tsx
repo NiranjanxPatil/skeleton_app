@@ -90,7 +90,7 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={onLogin}
-                className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover-bg-primary-700 dark:focus:ring-primary-800"
+                className="w-full text-white bg-primary-600 border border-white-500 hover:bg-primary-700 focus:ring-4 hover:text-extrabold focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover-bg-primary-700 dark:focus:ring-primary-800"
                 disabled={buttonDisabled || loading}
               >
                 Sign in
@@ -102,6 +102,26 @@ export default function LoginPage() {
             </form>
           </div>
         </div>
+        <footer className="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
+    <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+      <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://niranjann.tech" className="hover:underline">Skeleton™</a>. All Rights Reserved.
+    </span>
+    <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+        <li>
+            <a href="#" className="mr-4 hover:underline md:mr-6 ">About</a>
+        </li>
+        <li>
+            <a href="#" className="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+        </li>
+        <li>
+            <a href="#" className="mr-4 hover:underline md:mr-6">Licensing</a>
+        </li>
+        <li>
+            <a href="https://niranjann.tech/contact" className="hover:underline">Contact</a>
+        </li>
+    </ul>
+    </div>
+</footer>
       </div>
     </section>
   );
